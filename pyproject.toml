@@ -1,0 +1,18 @@
+[project]
+name = "repl-nix-workspace"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.11"
+dependencies = [
+    "deepface==0.0.93",
+    "email-validator>=2.2.0",
+    "flask-sqlalchemy>=3.1.1",
+    "flask==3.0.3",
+    "gunicorn>=23.0.0",
+    "numpy==1.26.4",
+    "opencv-python>=4.11.0.86",
+    "opencv-python-headless==4.10.0.84",
+    "tensorflow==2.15.0",
+    "psycopg2-binary>=2.9.10",
+    "keras==2.15.0",
+]
