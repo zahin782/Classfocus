@@ -1,0 +1,5 @@
+# Requirements for local Windows deployment
+flask
+opencv-python-headless
+fer
+numpy
