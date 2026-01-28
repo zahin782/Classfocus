@@ -1,9 +1,0 @@
-# Requirements for local Windows deployment
-Flask==3.0.3
-deepface==0.0.93
-opencv-python-headless==4.10.0.84
-numpy==1.26.4
-tensorflow-cpu==2.15.0
-keras==2.15.0
-pillow>=8.0.0
-requests>=2.25.0
