@@ -23,7 +23,9 @@ class ClassFocusApp {
         
         // Session data
         this.isAnalyzing = false;
-        this.totalFrames = 0;
+        this.sessionNumber = 1;
+        this.allSessions = [];
+        this.totalFrames = 0; //
         this.attentiveFrames = 0;
         this.sessionStartTime = null;
         this.analysisInterval = null;
@@ -112,7 +114,8 @@ class ClassFocusApp {
         this.stopBtn.disabled = true;
         
         // Show final results
-        this.showFinalResults();
+         this.showFinalResults();           //
+         this.saveSessionData();
         
         this.updateStatusDisplay('initializing', 'Session ended');
         this.emotionDisplay.textContent = 'Session complete';
@@ -477,7 +480,40 @@ class ClassFocusApp {
             this.finalResults.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 300);
     }
-    
+    saveSessionData() {                                         //
+    const totalTime = this.sessionStartTime 
+        ? Math.floor((Date.now() - this.sessionStartTime) / 1000)
+        : 0;
+
+    const percentage = this.totalFrames > 0 
+        ? Math.round((this.attentiveFrames / this.totalFrames) * 100)
+        : 0;
+
+    this.allSessions.push({
+        sessionNo: this.sessionNumber,
+        frames: this.totalFrames,
+        attentive: this.attentiveFrames,
+        duration: totalTime,
+        score: percentage
+    });
+
+    this.sessionNumber++;
+}    
+    downloadAllSessions() {                                                 //
+    let csv = "Session No,Frames Analyzed,Attentive Moments,Session Duration,Attention Score\n";
+
+    this.allSessions.forEach(s => {
+        csv += `${s.sessionNo},${s.frames},${s.attentive},${s.duration},${s.score}\n`;
+    });
+
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "all_sessions.csv";
+    a.click();
+}
     resetSession() {
         this.totalFrames = 0;
         this.attentiveFrames = 0;
@@ -493,7 +529,7 @@ class ClassFocusApp {
 
 // Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new ClassFocusApp();
+    window.app = new ClassFocusApp();     //
     
     // Add some CSS for engagement feedback
     const style = document.createElement('style');

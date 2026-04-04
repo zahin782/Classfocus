@@ -13,7 +13,7 @@ app = Flask(__name__)
 FRAME_W, FRAME_H = 640, 480
 SMOOTH_WINDOW = 7
 EYE_CLOSED_EAR = 0.20
-SLEEP_SECS = 20.0
+SLEEP_SECS = 7.0
 NOFACE_NOT_ATTENTIVE_AFTER = 1.0
 
 # Intensity thresholds
