@@ -4,4 +4,4 @@ opencv-python-headless
 fer
 numpy
 gunicorn
-mediapipe
+mediapipe==0.10.21

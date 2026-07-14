@@ -7,6 +7,15 @@ import numpy as np
 from flask import Flask, Response, jsonify, render_template, request
 import mediapipe as mp
 
+print("=" * 50)
+print("MediaPipe module:", mp)
+print("MediaPipe file:", getattr(mp, "__file__", "None"))
+print("MediaPipe version:", getattr(mp, "__version__", "Unknown"))
+print("Has solutions:", hasattr(mp, "solutions"))
+print("Dir:", dir(mp))
+print("=" * 50)
+import mediapipe as mp
+
 app = Flask(__name__)
 
 # ---------------------- Settings ----------------------
