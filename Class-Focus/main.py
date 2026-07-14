@@ -285,10 +285,15 @@ def status():
             "attentive": True
         })
 
+import os
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
-        app.run(host='0.0.0.0', port=5000, debug=True)
+        app.run(
+            host="0.0.0.0",
+            port=int(os.environ.get("PORT", 5000)),
+            debug=False
+        )
     finally:
         if cap is not None:
             cap.release()
